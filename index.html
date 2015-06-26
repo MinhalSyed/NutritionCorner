@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Nutrition Corner
+  </title>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.js"></script>
+  <link href="animations.css" rel="stylesheet" type="text/css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+  <script src="scripts/main.js"></script>
+  <style>
+  h1{
+    text-align:center;
+  }
+
+  body {
+    background-color: rgba(161, 161, 159, 0.47)
+  }
+
+  .wrapper {
+    font: normal normal normal 14px/1.4em helvetica-w01-light,helvetica-w02-light,sans-serif;
+    width: 1106px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    min-height:1500px;
+    padding: 10px;
+  }
+
+  .imgContainer {
+    padding: 10px;
+    width: 248px;
+    float:left;
+  }
+  .BodyText {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    float: left;
+  }
+
+  .btnBar {
+    height: 39px;
+    background-color: #DC143C;
+    margin-bottom: 10px;
+  }
+
+  .btnContainer {
+    width: 497px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn {
+    padding: 10px;
+    font: normal normal normal 16px/1.1em din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif;
+    float: left;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(228, 221, 221);
+    cursor: pointer;
+  }
+
+  .btn.selected{
+    color:white;
+    cursor: default;
+    background-color:rgb(255, 126, 0);
+  }
+  .btn.selected:hover{
+    color:white;
+    cursor: default;
+  }
+
+  .btn:hover {
+    color:white;
+    text-shadow: 0.3px 0.3px 0.3px white;
+  }
+
+  h1 {
+    margin:0px;
+  }
+
+  #outerContainer
+  {
+    position:relative;
+  }
+  #innerContainer
+  {
+    position:absolute; top:50%; height:10em; margin-top:0em;
+  }
+
+  </style>
+
+  <script type="text/javascript">
+  if (jQuery && jQuery) {
+    $j = jQuery;
+  }
+  </script>
+</head>
+<body ng-app="main">
+  <div class="wrapper" ng-controller="mainController">
+    <div id="outerContainer" style="height:74px;">
+      <a href="" ng-click="bindPage(Links[0].url)">
+        <img style="float:left;vertical-align:middle;" src="img/logo.png"/>
+        <span id="innerContainer" style="vertical-align:middle;font-size:16pt;">Nutrition Corner</span>
+      </a>
+    </div>
+    <div>
+      <div>
+        <img src="img/banner.jpg" height="250" />
+        <div class="btnBar">
+          <div class="btnContainer">
+            <div class="btn" ng-repeat="link in Links" ng-click="bindPage(link.url)" ng-class="{selected: TemplateSelection === link.url }">
+              {{link.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="imgContainer" ng-if="TemplateSelection == 'partials/contact.html' ">
+        <div>
+          <img src="img/test.jpg" ng-repeat="num in Images"  style="float:left;"/>
+        </div>
+
+
+        <div style="clear:both;"></div>
+        <i><p style="text-align:center; width:100%;">"A healthy life is worth living for."</p></i>
+
+      </div>
+
+    </div>
+
+    <div id="pageContent">
+      <div ng-include="TemplateSelection"></div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+</body>
+
+</html>
